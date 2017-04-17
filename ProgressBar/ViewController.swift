@@ -63,9 +63,6 @@ class ViewController: UIViewController {
         //return formattedProgress
         
     //}
-    
-    //func timeFormatter() {
-    //}
 
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
