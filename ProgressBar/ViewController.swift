@@ -49,7 +49,7 @@ class ViewController: UIViewController {
     @IBAction func timerBtn(_ sender: UIButton) {
         
         timer.invalidate()
-        seconds = 10
+        seconds = 9
         runTimer()
         
     }
@@ -76,12 +76,16 @@ class ViewController: UIViewController {
             formatter.maximumFractionDigits = 0
             let progressStatus: Float = 1 - (Float(seconds) * 0.1)
             print("\(progressStatus)")
-            let progressPercent: Float = progressStatus * 100
-            let formattedProgress = formatter.string(from: NSNumber(value: progressPercent))
             timerLbl.text = "100%"
             timerBar.progress = 1.0
             
+        } else if seconds == 10 {
+                
+            timerLbl.text = "0%"
+            timerBar.progress = 0.0
+            seconds -= 1
             
+        
         } else {
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = 0
