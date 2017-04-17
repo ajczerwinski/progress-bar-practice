@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ProgressBar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6K-g5-ecT">
+                                <rect key="frame" x="149" y="305" width="77" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="77" id="0aK-ZM-igT"/>
+                                    <constraint firstAttribute="height" constant="57" id="8eo-iV-Mdv"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="progressBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="igG-sD-PkO"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vm8-RK-wel">
+                                <rect key="frame" x="112" y="258" width="150" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="aeg-wZ-fEY"/>
+                                    <constraint firstAttribute="height" constant="10" id="bKg-2P-8Fr"/>
+                                </constraints>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bd-jF-8CF">
+                                <rect key="frame" x="157" y="218" width="60" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="OVM-DT-4sG"/>
+                                    <constraint firstAttribute="height" constant="20" id="SLm-lg-T2C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ik2-CK-9zH">
+                                <rect key="frame" x="157" y="399" width="60" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="4WS-5S-99V"/>
+                                    <constraint firstAttribute="height" constant="20" id="T2H-Pg-umU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pxd-NM-noG">
+                                <rect key="frame" x="112" y="439" width="150" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="IuJ-kx-H2W"/>
+                                    <constraint firstAttribute="height" constant="10" id="fH2-Ww-Lu7"/>
+                                </constraints>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMR-GE-2YV">
+                                <rect key="frame" x="148.5" y="486" width="77" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="IaL-VK-vkw"/>
+                                    <constraint firstAttribute="width" constant="77" id="ny7-Ky-GQM"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="timerBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CF3-8c-COW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2bd-jF-8CF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1j0-A9-avC"/>
+                            <constraint firstItem="C6K-g5-ecT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3dl-hy-I4I"/>
+                            <constraint firstItem="C6K-g5-ecT" firstAttribute="top" secondItem="Vm8-RK-wel" secondAttribute="bottom" constant="37" id="Dxd-oV-R9z"/>
+                            <constraint firstItem="Vm8-RK-wel" firstAttribute="top" secondItem="2bd-jF-8CF" secondAttribute="bottom" constant="20" id="Oo2-g1-F1H"/>
+                            <constraint firstItem="pxd-NM-noG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UxD-3u-8XK"/>
+                            <constraint firstItem="ik2-CK-9zH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YDd-28-g6p"/>
+                            <constraint firstItem="C6K-g5-ecT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Zvu-my-lCy"/>
+                            <constraint firstItem="lMR-GE-2YV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bi0-T1-Vgu"/>
+                            <constraint firstItem="Vm8-RK-wel" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lJx-bN-Xhh"/>
+                            <constraint firstItem="pxd-NM-noG" firstAttribute="top" secondItem="ik2-CK-9zH" secondAttribute="bottom" constant="20" id="s5X-9Z-B7E"/>
+                            <constraint firstItem="ik2-CK-9zH" firstAttribute="top" secondItem="C6K-g5-ecT" secondAttribute="bottom" constant="37" id="v2J-x8-y7d"/>
+                            <constraint firstItem="lMR-GE-2YV" firstAttribute="top" secondItem="pxd-NM-noG" secondAttribute="bottom" constant="37" id="wh0-bO-Qdb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="progressBar" destination="Vm8-RK-wel" id="6bG-5V-frI"/>
+                        <outlet property="progressLbl" destination="2bd-jF-8CF" id="voa-C1-gZh"/>
+                        <outlet property="timerBar" destination="pxd-NM-noG" id="AUP-Ac-WkF"/>
+                        <outlet property="timerLbl" destination="ik2-CK-9zH" id="Lix-Gf-CoP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="135.38230884557723"/>
+        </scene>
+    </scenes>
+</document>
