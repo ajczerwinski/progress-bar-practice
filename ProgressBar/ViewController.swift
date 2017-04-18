@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     var timesTapped: Float = 0.0
     var time: Float = 0.0
     var timer = Timer()
-    var seconds = 60
+    var hundredths = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +49,16 @@ class ViewController: UIViewController {
     @IBAction func timerBtn(_ sender: UIButton) {
         
         timer.invalidate()
-        seconds = 9
+        hundredths = 99
         runTimer()
         
     }
     
+    @IBAction func stopBtn(_ sender: UIButton) {
+        
+        timer.invalidate()
+        
+    }
     //func progressFormatter(progress: Float) -> String {
     
         //let formatter = NumberFormatter()
@@ -65,37 +70,37 @@ class ViewController: UIViewController {
     //}
 
     func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
     }
     
     func updateTimer() {
-        if seconds < 1 {
+        if hundredths < 1 {
             //timer.invalidate()
-            seconds = 10
+            hundredths = 100
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = 0
-            let progressStatus: Float = 1 - (Float(seconds) * 0.1)
+            let progressStatus: Float = 1 - (Float(hundredths) * 0.01)
             print("\(progressStatus)")
             timerLbl.text = "100%"
             timerBar.progress = 1.0
             
-        } else if seconds == 10 {
+        } else if hundredths == 100 {
                 
             timerLbl.text = "0%"
             timerBar.progress = 0.0
-            seconds -= 1
+            hundredths -= 1
             
         
         } else {
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = 0
-            let progressStatus: Float = 1 - (Float(seconds) * 0.1)
+            let progressStatus: Float = 1 - (Float(hundredths) * 0.01)
             print("\(progressStatus)")
             let progressPercent: Float = progressStatus * 100
             let formattedProgress = formatter.string(from: NSNumber(value: progressPercent))
             timerLbl.text = "\(formattedProgress!)%"
             timerBar.progress = progressStatus
-            seconds -= 1
+            hundredths -= 1
         }
     }
 
