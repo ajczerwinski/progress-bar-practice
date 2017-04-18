@@ -81,21 +81,21 @@ class ViewController: UIViewController {
         
         } else {
             
-            timerLbl.text = progressFormatter(progress: Float(hundredths))
-            timerBar.progress = updateProgressBar(hundredths: hundredths)
+            timerLbl.text = progressFormatter(text: hundredths)
+            timerBar.progress = updateProgressBar(progress: hundredths)
             hundredths -= 1
             
         }
     }
     
-    func updateProgressBar(hundredths: Int) -> Float {
+    func updateProgressBar(progress: Int) -> Float {
         
         let progressStatus: Float = 1 - (Float(hundredths) * 0.01)
         return progressStatus
         
     }
     
-    func progressFormatter(progress: Float) -> String {
+    func progressFormatter(text: Int) -> String {
     
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 0
