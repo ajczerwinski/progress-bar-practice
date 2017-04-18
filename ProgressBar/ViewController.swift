@@ -59,18 +59,11 @@ class ViewController: UIViewController {
         timer.invalidate()
         
     }
-    //func progressFormatter(progress: Float) -> String {
-    
-        //let formatter = NumberFormatter()
-        //formatter.maximumFractionDigits = 0
-        //let progressPercent: Float = timesTapped * 100
-        //let formattedProgress = formatter.string(from: NSNumber(value: progressPercent))
-        //return formattedProgress
-        
-    //}
 
     func runTimer() {
+        
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        
     }
     
     func updateTimer() {
@@ -87,16 +80,31 @@ class ViewController: UIViewController {
             
         
         } else {
-            let formatter = NumberFormatter()
-            formatter.maximumFractionDigits = 0
-            let progressStatus: Float = 1 - (Float(hundredths) * 0.01)
-            print("\(progressStatus)")
-            let progressPercent: Float = progressStatus * 100
-            let formattedProgress = formatter.string(from: NSNumber(value: progressPercent))
-            timerLbl.text = "\(formattedProgress!)%"
-            timerBar.progress = progressStatus
+            
+            timerLbl.text = progressFormatter(progress: Float(hundredths))
+            timerBar.progress = updateProgressBar(hundredths: hundredths)
             hundredths -= 1
+            
         }
+    }
+    
+    func updateProgressBar(hundredths: Int) -> Float {
+        
+        let progressStatus: Float = 1 - (Float(hundredths) * 0.01)
+        return progressStatus
+        
+    }
+    
+    func progressFormatter(progress: Float) -> String {
+    
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 0
+        let progressStatus: Float = 1 - (Float(hundredths) * 0.01)
+        let progressPercent: Float = progressStatus * 100
+        let formattedProgress = formatter.string(from: NSNumber(value: progressPercent))
+        
+        return "\(formattedProgress!)%"
+    
     }
 
 }
