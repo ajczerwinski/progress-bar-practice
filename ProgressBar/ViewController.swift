@@ -14,12 +14,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var timerLbl: UILabel!
     @IBOutlet weak var timerBar: UIProgressView!
+    @IBOutlet weak var moneyLbl: UILabel!
     
     
     var timesTapped: Float = 0.0
-    //var time: Float = 0.0
     var timer = Timer()
     var tenths = 100
+    var money = 0.0
+    //var isManager = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,10 @@ class ViewController: UIViewController {
         
         timesTapped += 0.1
         
+        
         if progressBar.progress == 1.0 {
+            money += 1.0
+            moneyLbl.text = moneyFormatter(amount: Float(money))
             progressBar.progress = 0.0
             timesTapped = 0.0
         }
@@ -71,6 +76,8 @@ class ViewController: UIViewController {
             
             timerLbl.text = timerProgressFormatter(text: tenths)
             timerBar.progress = updateTimerProgressBar(progress: tenths)
+            money += 10
+            moneyLbl.text = moneyFormatter(amount: Float(money))
             tenths = 100
             
         } else if tenths == 100 {
@@ -116,6 +123,15 @@ class ViewController: UIViewController {
         let formattedProgress = formatter.string(from: NSNumber(value: progressStatus))
         
         return "\(formattedProgress!)%"
+        
+    }
+    
+    func moneyFormatter(amount: Float) -> String {
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        
+        return formatter.string(from: NSNumber(value: amount))!
         
     }
 
