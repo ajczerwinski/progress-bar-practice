@@ -17,39 +17,37 @@ class ViewController: UIViewController {
     
     
     var timesTapped: Float = 0.0
-    var time: Float = 0.0
+    //var time: Float = 0.0
     var timer = Timer()
-    var hundredths = 100
+    var tenths = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.timesTapped = 0.0
-        self.progressBar.progress = 0.0
+        timesTapped = 0.0
+        progressBar.progress = 0.0
         
     }
     
     
     @IBAction func progressBtn(_ sender: UIButton) {
         
-        self.timesTapped += 0.1
+        timesTapped += 0.1
         
-        if self.progressBar.progress == 1.0 {
-            self.progressBar.progress = 0.0
-            self.timesTapped = 0.0
+        if progressBar.progress == 1.0 {
+            progressBar.progress = 0.0
+            timesTapped = 0.0
         }
-        let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = 0
-        let progressPercent: Float = timesTapped * 100
-        let formattedProgress = formatter.string(from: NSNumber(value: progressPercent))
-        self.progressLbl.text = "\(formattedProgress!)%"
-        self.progressBar.progress = timesTapped
+        
+        progressLbl.text = tapperProgressFormatter(text: timesTapped)
+        progressBar.progress = timesTapped
+        
     }
     
     @IBAction func timerBtn(_ sender: UIButton) {
         
         timer.invalidate()
-        hundredths = 99
+        tenths = 100
         runTimer()
         
     }
@@ -57,6 +55,8 @@ class ViewController: UIViewController {
     @IBAction func stopBtn(_ sender: UIButton) {
         
         timer.invalidate()
+        timerLbl.text = "0%"
+        timerBar.progress = 0.0
         
     }
 
@@ -67,44 +67,56 @@ class ViewController: UIViewController {
     }
     
     func updateTimer() {
-        if hundredths < 1 {
+        if tenths < 1 {
             
-            timerLbl.text = "100%"
-            timerBar.progress = 1.0
+            timerLbl.text = timerProgressFormatter(text: tenths)
+            timerBar.progress = updateTimerProgressBar(progress: tenths)
+            tenths = 100
             
-        } else if hundredths == 100 {
+        } else if tenths == 100 {
                 
-            timerLbl.text = "0%"
-            timerBar.progress = 0.0
-            hundredths -= 1
+            timerLbl.text = timerProgressFormatter(text: tenths)
+            timerBar.progress = updateTimerProgressBar(progress: tenths)
+            tenths -= 1
             
         
         } else {
             
-            timerLbl.text = progressFormatter(text: hundredths)
-            timerBar.progress = updateProgressBar(progress: hundredths)
-            hundredths -= 1
+            timerLbl.text = timerProgressFormatter(text: tenths)
+            timerBar.progress = updateTimerProgressBar(progress: tenths)
+            tenths -= 1
             
         }
     }
     
-    func updateProgressBar(progress: Int) -> Float {
+    func updateTimerProgressBar(progress: Int) -> Float {
         
-        let progressStatus: Float = 1 - (Float(hundredths) * 0.01)
+        let progressStatus: Float = 1 - (Float(tenths) * 0.01)
         return progressStatus
         
     }
     
-    func progressFormatter(text: Int) -> String {
+    func timerProgressFormatter(text: Int) -> String {
     
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 0
-        let progressStatus: Float = 1 - (Float(hundredths) * 0.01)
+        let progressStatus: Float = 1 - (Float(tenths) * 0.01)
         let progressPercent: Float = progressStatus * 100
         let formattedProgress = formatter.string(from: NSNumber(value: progressPercent))
         
         return "\(formattedProgress!)%"
     
+    }
+    
+    func tapperProgressFormatter(text: Float) -> String {
+        
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 0
+        let progressStatus: Float = text * 100
+        let formattedProgress = formatter.string(from: NSNumber(value: progressStatus))
+        
+        return "\(formattedProgress!)%"
+        
     }
 
 }
