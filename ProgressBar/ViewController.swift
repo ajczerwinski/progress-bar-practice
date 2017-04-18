@@ -75,12 +75,7 @@ class ViewController: UIViewController {
     
     func updateTimer() {
         if hundredths < 1 {
-            //timer.invalidate()
-            hundredths = 100
-            let formatter = NumberFormatter()
-            formatter.maximumFractionDigits = 0
-            let progressStatus: Float = 1 - (Float(hundredths) * 0.01)
-            print("\(progressStatus)")
+            
             timerLbl.text = "100%"
             timerBar.progress = 1.0
             
